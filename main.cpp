@@ -29,12 +29,11 @@ struct Point
 #pragma region GlobalVariable
 
 vector<Point> snake = {
-	Point{ WIDTH / 2 + 2, HEIGHT / 2 },
-	Point{ WIDTH / 2 + 1, HEIGHT / 2 },
-	Point{ WIDTH / 2, HEIGHT / 2 },
-	Point{ WIDTH / 2 - 1, HEIGHT / 2 },
-	Point{ WIDTH / 2 - 2, HEIGHT / 2 }
-};
+	Point{WIDTH / 2 + 2, HEIGHT / 2},
+	Point{WIDTH / 2 + 1, HEIGHT / 2},
+	Point{WIDTH / 2, HEIGHT / 2},
+	Point{WIDTH / 2 - 1, HEIGHT / 2},
+	Point{WIDTH / 2 - 2, HEIGHT / 2}};
 Direction direction = Direction::right;
 Point apple;
 int score = 0;
@@ -61,6 +60,25 @@ void resetSnake();
 void showStartMenu();
 void drawBox();
 #pragma endregion
+
+void drawBox()
+{
+	for (size_t i = 0; i < WIDTH; i++)
+		cout << '=';
+	gotoxy(0, HEIGHT);
+	for (size_t i = 0; i < WIDTH; i++)
+		cout << '=';
+	for (size_t i = 1; i < HEIGHT; i++)
+	{
+		gotoxy(0, i);
+		cout << '|';
+	}
+	for (size_t i = 1; i < HEIGHT; i++)
+	{
+		gotoxy(WIDTH, i);
+		cout << '|';
+	}
+}
 
 int main()
 {
