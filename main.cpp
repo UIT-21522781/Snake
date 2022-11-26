@@ -106,6 +106,22 @@ void move()
 	else if (direction == Direction::right)
 		snake[0].x += 1;
 }
+bool isHitWall()
+{
+	return snake[0].x == 0 || snake[0].y == 0 || snake[0].x == WIDTH || snake[0].y == HEIGHT;
+}
+bool isBiteItself()
+{
+	Point head = snake[0];
+	for (size_t i = 1; i < snake.size(); i++)
+		if (head.x == snake[i].x && head.y == snake[i].y)
+			return true;
+	return false;
+}
+bool isAteApple()
+{
+	return snake[0].x == apple.x && snake[0].y == apple.y;
+}
 
 int main()
 {
